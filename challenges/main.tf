@@ -6,6 +6,7 @@ resource "kubernetes_service" "webapp-service" {
     port {
       node_port   = 30080
       target_port = 8080
+      port = 8080
     }
 
     type = "NodePort"
@@ -32,7 +33,7 @@ resource "kubernetes_deployment" "frontend" {
     template {
       metadata {
         labels = {
-          test = "MyExampleApp"
+          name = "webapp"
         }
       }
 
